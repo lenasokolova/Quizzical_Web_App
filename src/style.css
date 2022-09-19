@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  background-color: #F5F7FB;
+}
+
+.App {
+  text-align: center;
+  width: 550px;
+  height: 550px;
+  border: 1px solid red;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* margin-right: -50%; */
+  transform: translate(-50%, -50%); 
+  font-family: 'Karla';
+  color: #293264;
+
+}
+
+.title-app {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  padding: 15px 55px;
+  border-radius: 15px;
+  font-family: 'Inter';
+  font-size: 16px;
+  margin-top: 30px;
+}
