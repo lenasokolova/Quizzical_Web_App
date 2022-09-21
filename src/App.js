@@ -1,17 +1,8 @@
-import { useState, useEffect } from "react";
-import { nanoid } from "nanoid";
+import { useState } from "react";
 import Questions from "./Questions";
-
-// function fetchData() {
-//   fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-//     .then((response) => response.json())
-//     .then((data) => setQuestions(data));
-//   console.log(questions);
-// }
 
 function App() {
   const [isQuesLoaded, setIsQuesLoaded] = useState(false);
-  const [questions, setQuestions] = useState([]);
 
   function handleClick() {
     return setIsQuesLoaded(!isQuesLoaded);
