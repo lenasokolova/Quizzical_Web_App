@@ -18,7 +18,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  /* margin-right: -50%; */
   transform: translate(-50%, -50%); 
   font-family: 'Karla';
   color: #293264;
@@ -38,4 +37,57 @@
   font-family: 'Inter';
   font-size: 16px;
   margin-top: 30px;
+}
+
+.quest-box {
+  background-color: #F5F7FB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.quest-content {
+  width: 450px;
+}
+
+.quest-p {
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #293264;
+  
+}
+.answer-container{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.answer-div {
+  border: 1px solid #4D5B9E;
+  border-radius: 7.5px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 10.24px;
+  color: #293264;
+  padding: 5px 15px;
+  margin-right: 10px;
+}
+
+.answer-p {
+  text-align: center;
+}
+
+.answer-btn {
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  width: 120px;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10.24px;  
 }
