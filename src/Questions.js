@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import QuestionSet from "./QuestionSet";
 
 export default function Questions() {
+  const [question, setQuestions] = useState([]);
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  console.log(data);
 
   useEffect(() => {
     fetch(
@@ -33,20 +37,25 @@ export default function Questions() {
 
   const listOfQuestions = data.map((item, index) => {
     return (
-      <div key={index}>
-        <h2>{item.question}</h2>
-      </div>
+      <section key={index}>
+        <QuestionSet
+          question={item.question}
+          answer_corr={item.correct_answer}
+          inc_answ_one={item.incorrect_answers[0]}
+          inc_answ_two={item.incorrect_answers[1]}
+          inc_answ_three={item.incorrect_answers[2]}
+        />
+      </section>
     );
   });
 
   return (
-    <main>
-      {listOfQuestions}
-      <button className="btn">Fetch data</button>
+    <main className="quest-box">
+      <section className="quest-content">{listOfQuestions}</section>
+
+      <button className="answer-btn">Check Answers</button>
       {loading && <div>Loading data...</div>}
       {error && <div>{`There is a problem fetchning data = ${error}`}</div>}
-      {/* {data && <div>{listItems}</div>} */}
-      {/* ?{homes.map(home => <div>{home.name} */}
     </main>
   );
 }
