@@ -8,16 +8,16 @@ export default function QuestionSet(props) {
       <p>{props.question}</p>
       <section className="answer-container">
         <div className="answer-div" style={styles}>
-          <p>{props.answer_corr}</p>
+          <p>{props.answers[3].answer}</p>
         </div>
         <div className="answer-div" style={styles}>
-          <p>{props.inc_answ_one}</p>
+          <p>{props.answers[1].answer}</p>
         </div>
         <div className="answer-div" style={styles}>
-          <p>{props.inc_answ_two}</p>
+          <p>{props.answers[2].answer}</p>
         </div>
         <div className="answer-div" style={styles}>
-          <p>{props.inc_answ_three}</p>
+          <p>{props.answers[0].answer}</p>
         </div>
       </section>
     </section>
