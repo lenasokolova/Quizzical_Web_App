@@ -3,12 +3,12 @@ import { nanoid } from "nanoid";
 import QuestionSet from "./QuestionSet";
 
 export default function Questions() {
-  const [question, setQuestions] = useState([]);
+  //   const [questions, setQuestions] = useState([]);
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(question);
+  //   console.log(question);
 
   useEffect(() => {
     fetch(
@@ -33,19 +33,29 @@ export default function Questions() {
       .finally(() => {
         setLoading(false);
       });
-    setQuestions(data);
   }, []);
 
   const listOfQuestions = data.map((item, index) => {
+    const allAnswers = [
+      { id: nanoid(), isCorrect: false, answer: item.incorrect_answers[0] },
+      { id: nanoid(), isCorrect: false, answer: item.incorrect_answers[1] },
+      { id: nanoid(), isCorrect: false, answer: item.incorrect_answers[2] },
+      { id: nanoid(), isCorrect: true, answer: item.correct_answer },
+    ];
+    return {
+      id: nanoid(),
+      question: item.question,
+      answers: allAnswers,
+    };
+  });
+
+  const questionElm = listOfQuestions.map((question) => {
     return (
-      <section key={index}>
+      <section key={question.id}>
         <QuestionSet
-          question={item.question}
-          answer_corr={item.correct_answer}
-          inc_answ_one={item.incorrect_answers[0]}
-          inc_answ_two={item.incorrect_answers[1]}
-          inc_answ_three={item.incorrect_answers[2]}
-          isChosen={item.isChosen}
+          question={question.question}
+          answers={question.answers}
+          isChosen={question.isChosen}
         />
       </section>
     );
@@ -53,7 +63,7 @@ export default function Questions() {
 
   return (
     <main className="quest-box">
-      <section className="quest-content">{listOfQuestions}</section>
+      <section className="quest-content">{questionElm}</section>
 
       <button className="answer-btn">Check Answers</button>
       {loading && <div>Loading data...</div>}
