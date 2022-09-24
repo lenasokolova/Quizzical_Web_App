@@ -8,7 +8,7 @@ export default function Questions() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(data);
+  console.log(question);
 
   useEffect(() => {
     fetch(
@@ -33,6 +33,7 @@ export default function Questions() {
       .finally(() => {
         setLoading(false);
       });
+    setQuestions(data);
   }, []);
 
   const listOfQuestions = data.map((item, index) => {
@@ -44,6 +45,7 @@ export default function Questions() {
           inc_answ_one={item.incorrect_answers[0]}
           inc_answ_two={item.incorrect_answers[1]}
           inc_answ_three={item.incorrect_answers[2]}
+          isChosen={item.isChosen}
         />
       </section>
     );
