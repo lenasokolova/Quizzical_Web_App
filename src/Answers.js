@@ -2,8 +2,10 @@ export default function Answers(props) {
   const styles = {
     backgroundColor: props.isChosen ? "#D6DBF5" : "transparent",
   };
+
   return (
     <section className="answer-container">
+      {/* {answerOptions} */}
       <div
         className="answer-div"
         style={styles}

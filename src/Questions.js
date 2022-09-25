@@ -54,15 +54,15 @@ export default function Questions() {
     console.log(id);
   }
 
-  const questionElm = listOfQuestions.map((question, index, answer) => {
+  const questionElm = listOfQuestions.map((question, index, i) => {
     return (
       <section key={index}>
         <QuestionSet question={question.question} key={question.id} />
         <Answers
           answers={question.answers}
           isChosen={question.isChosen}
-          id={question.id}
-          holdAnswer={() => holdAnswer(answer.id)}
+          id={question.answers.id}
+          holdAnswer={() => holdAnswer(question.answers.id)}
         />
       </section>
     );
