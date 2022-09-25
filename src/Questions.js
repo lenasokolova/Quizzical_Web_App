@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import QuestionSet from "./QuestionSet";
+import Answers from "./Answers";
 
 export default function Questions() {
   //   const [questions, setQuestions] = useState([]);
@@ -35,7 +36,7 @@ export default function Questions() {
       });
   }, []);
 
-  const listOfQuestions = data.map((item, index) => {
+  const listOfQuestions = data.map((item) => {
     const allAnswers = [
       { id: nanoid(), isCorrect: false, answer: item.incorrect_answers[0] },
       { id: nanoid(), isCorrect: false, answer: item.incorrect_answers[1] },
@@ -49,13 +50,19 @@ export default function Questions() {
     };
   });
 
-  const questionElm = listOfQuestions.map((question) => {
+  function holdAnswer(id) {
+    console.log(id);
+  }
+
+  const questionElm = listOfQuestions.map((question, index, answer) => {
     return (
-      <section key={question.id}>
-        <QuestionSet
-          question={question.question}
+      <section key={index}>
+        <QuestionSet question={question.question} key={question.id} />
+        <Answers
           answers={question.answers}
           isChosen={question.isChosen}
+          id={question.id}
+          holdAnswer={() => holdAnswer(answer.id)}
         />
       </section>
     );
