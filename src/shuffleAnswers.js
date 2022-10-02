@@ -1,3 +1,1 @@
-export function shuffleAnswers(array) {
-  [...array].sort(() => Math.random() - 0.5);
-}
+export const shuffleAnswers = (array) => [...array].sort(() => Math.random() - 0.5)

@@ -1,42 +1,25 @@
-export default function Answers(props) {
+function Answer(props) {
   const styles = {
-    backgroundColor: props.answers.isChosen ? "#D6DBF5" : "transparent",
+    backgroundColor: props.answer.isChosen ? "#D6DBF5" : "transparent"
   };
+  return (
+    <div
+      className="answer-div"
+      style={styles}
+      id={props.answer.id}
+      onClick={() => props.holdAnswer(props.answer.id)}
+    >
+      <p>{props.answer.answer}</p>
+    </div>
+  );
+}
 
+export default function Answers(props) {
   return (
     <section className="answer-container">
-      <div
-        className="answer-div"
-        style={styles}
-        id={props.answers[3].id}
-        onClick={() => props.holdAnswer(props.answers[3].id)}
-      >
-        <p>{props.answers[3].answer}</p>
-      </div>
-      <div
-        className="answer-div"
-        style={styles}
-        id={props.answers[1].id}
-        onClick={() => props.holdAnswer(props.answers[1].id)}
-      >
-        <p>{props.answers[1].answer}</p>
-      </div>
-      <div
-        className="answer-div"
-        style={styles}
-        id={props.answers[2].id}
-        onClick={() => props.holdAnswer(props.answers[2].id)}
-      >
-        <p>{props.answers[2].answer}</p>
-      </div>
-      <div
-        className="answer-div"
-        style={styles}
-        id={props.answers[0].id}
-        onClick={() => props.holdAnswer(props.answers[0].id)}
-      >
-        <p>{props.answers[0].answer}</p>
-      </div>
+      {props.answers.map((answer) => (
+        <Answer holdAnswer={props.holdAnswer} answer={answer} key={answer.id} />
+      ))}
     </section>
   );
 }
