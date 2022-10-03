@@ -10,7 +10,7 @@ const QuestionCard = ({ question, answers, callback, userAnswer, questionNr, tot
             </p>
             <div>
                 {answers.map((answer) => (
-                    <div>
+                    <div key={answer}>
                         <button className=".answer-btn" disabled={userAnswer} onClick={callback}>
                             <span dangerouslySetInnerHTML={{ __html: answer }}></span>
                         </button>
