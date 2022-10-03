@@ -32,15 +32,13 @@
 
 .btn {
   background-color: #4D5B9E;
-  /* color: #F5F7FB; */
+  color: #F5F7FB;
   padding: 15px 55px;
   border-radius: 15px;
   font-family: 'Inter';
   font-size: 16px;
   margin-top: 30px;
 }
-
-
 
 .quest-box {
   background-color: #F5F7FB;
