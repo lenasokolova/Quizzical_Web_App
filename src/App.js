@@ -8,6 +8,8 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [score, setScore] = useState(0);
 
   async function startQuiz() {
     try {
@@ -76,6 +78,18 @@ function App() {
     );
   }
 
+  function checkAnswers() {
+    let correctCount = 0;
+    questions.forEach(question => {
+      const selectedAnswer = question.answers.find(answer => answer.answer.isChosen);
+      if (selectedAnswer.isCorrect) correctCount += 1;
+      setScore(correctCount);
+      console.log(correctCount);
+      console.log(selectedAnswer);
+      console.log(questions)
+    })
+  }
+
   const questionElm = questions.map((question, index) => {
     return (
       <section key={index}>
@@ -105,7 +119,7 @@ function App() {
           {error && <div>{`There is a problem fetchning data = ${error}`}</div>}
           <section className="quest-content">{questionElm}</section>
 
-          <button className="answer-btn">Check Answers</button>
+          <button className="answer-btn" onClick={checkAnswers}>Check Answers</button>
         </main>
       )}
     </div>
