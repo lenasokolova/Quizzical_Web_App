@@ -36,7 +36,19 @@ const App = () => {
     //change to checkAnswers
   }
 
-
+  const questionElmts = questions.map((question, index) => {
+    return (
+      <QuestionCard
+        key={index}
+        questionNr={number + 1}
+        totalQuestions={TOTAL_QUESTIONS}
+        question={question.question}
+        answers={question.answers}
+        userAnswer={userAnswers ? userAnswers[number] : undefined}
+        callback={checkAnswer}
+      />
+    )
+  })
 
   return (
     <div className="App">
@@ -47,18 +59,10 @@ const App = () => {
         </button>
       ) : null}
 
-      {!gameOver ? <p>Score:</p> : null}
+      {!gameOver ? <p>Score:{score}</p> : null}
       {loading && <p>Loading Questions...</p>}
-      {!loading && !gameOver && (
-        <QuestionCard
-          questionNr={number + 1}
-          totalQuestions={TOTAL_QUESTIONS}
-          question={questions[number].question}
-          answers={questions[number].answers}
-          userAnswer={userAnswers ? userAnswers[number] : undefined}
-          callback={checkAnswer}
-        />
-      )}
+      {!loading && !gameOver && <section>{questionElmts}</section>
+      }
       {!gameOver &&
         !loading &&
         userAnswers.length === number + 1 &&
